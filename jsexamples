@@ -1,0 +1,140 @@
+(function() {
+            document.getElementById('js').innerHTML = "this isself invoking function functon";
+        })();
+
+        function class1() {
+            this.name = "sravan";
+            this.emp = "102344";
+            this.fn1 = function() {
+
+                return this.name + "  " + this.emp
+            }
+
+        }
+        class1.prototype.fn3 = function() {
+            return "Extra function addedd class level"
+        }
+        var obj1 = new class1();
+        obj1.fn2 = function(a, b) {
+            return a + b;
+        }
+        var str = obj1.fn1();
+        var str2 = obj1.fn2(34, 45);
+
+        var jsonObj = {
+            "name": "xya",
+            "age": 34
+        }
+        var arrJson = [{
+            "name": "sravan",
+            "loc": "india",
+            "age": 34
+        }, {
+            "name": "manasa",
+            "loc": "US"
+        }];
+
+        var counter = (function() {
+
+            var i = 0;
+
+            return {
+                get: function() {
+                    return i;
+                },
+                set: function(val) {
+                    i = val;
+                },
+                increment: function() {
+                    return ++i;
+                }
+            };
+        })();
+
+
+
+        // `counter` is an object with properties, which in this case happen to be
+        // methods.
+
+        counter.get(); // 0
+        counter.set(3);
+        console.log(counter.increment()); // 4
+        console.log(counter.increment()); // 5
+
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            fullName: function(firstName, lastName) {
+                return firstName + " " + lastName + " " + this.firstName;
+            }
+        }
+        var myObject = {
+            firstName: "Mary",
+            lastName: "Doe",
+        }
+        person.fullName();
+        console.log(person.fullName.apply(myObject, ["sravan", "Reddy"]));
+
+
+function makeCounter() {
+
+    var i = 0;
+    return function() {
+        console.log(++i);
+    };
+}
+var counter = makeCounter();
+counter(); // logs: 1
+counter(); // logs: 2
+
+function counterF() {
+    var i = 0;
+    console.log(++i);
+}
+counterF();
+1
+
+
+counterF();
+1
+
+function sayHello(name) {
+    var text = 'Hello ' + name;
+    var say = function() { console.log(text); }
+    say();
+}
+sayHello('Joe');
+
+
+var counter2 = makeCounter();
+counter2(); // logs: 1
+counter2(); // logs: 2
+
+
+var counter = (function() {
+
+    var i = 0;
+
+    return {
+        get: function() {
+            return i;
+        },
+        set: function(val) {
+            i = val;
+        },
+        increment: function() {
+            return ++i;
+        }
+    };
+}());
+
+
+
+// `counter` is an object with properties, which in this case happen to be
+// methods.
+
+counter.get(); // 0
+counter.set(3);
+counter.increment(); // 4
+counter.increment(); // 5
+
